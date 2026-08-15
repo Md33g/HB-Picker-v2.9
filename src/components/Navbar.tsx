@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { Volume2, VolumeX, Video, ImagePlus, Pipette, RotateCcw, Flame } from 'lucide-react';
+import { Volume2, VolumeX, Video, ImagePlus, Pipette, RotateCcw, Flame, Smartphone } from 'lucide-react';
 import { setSoundEnabled, playTickSound, triggerHaptic } from '../utils/sound';
 
 interface NavbarProps {
@@ -11,6 +11,7 @@ interface NavbarProps {
   onSelectFile: (file: File) => void;
   isLiveCamera: boolean;
   onToggleLiveCamera: () => void;
+  onOpenApkGuide: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -22,6 +23,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   onSelectFile,
   isLiveCamera,
   onToggleLiveCamera,
+  onOpenApkGuide,
 }) => {
   const galleryInputRef = useRef<HTMLInputElement>(null);
 
@@ -86,6 +88,19 @@ export const Navbar: React.FC<NavbarProps> = ({
         >
           <Video className="w-3.5 h-3.5" />
           <span className="text-[11px] font-bold">{isLiveCamera ? 'Live ON' : 'Live Picker'}</span>
+        </button>
+
+        {/* APK / Offline Install Button */}
+        <button
+          id="nav-apk-btn"
+          onClick={() => {
+            triggerHaptic('medium');
+            onOpenApkGuide();
+          }}
+          title="Install APK & Offline Mode"
+          className="w-8 h-8 rounded-xl bg-red-950/40 hover:bg-red-900/60 border border-red-800/80 flex items-center justify-center text-red-400 hover:text-white transition-all cursor-pointer active:scale-95 shadow-sm"
+        >
+          <Smartphone className="w-4 h-4" />
         </button>
 
         {/* Gallery Pick Button */}

@@ -7,6 +7,7 @@ import { ColorHistory } from './components/ColorHistory';
 import { ExtractedColorsView } from './components/ExtractedColorsView';
 import { Toast } from './components/Toast';
 import { ExportModal } from './components/ExportModal';
+import { ApkGuideModal } from './components/ApkGuideModal';
 import { ColorData, ColorHistoryItem, ExtractedColor } from './types';
 import { createColorData, hexToRgb } from './utils/colorConverter';
 import { extractPaletteFromImageData, extractDetailedColorsFromImageData, ExtractedPaletteResult } from './utils/paletteExtractor';
@@ -51,6 +52,7 @@ export default function App() {
   const [toastMessage, setToastMessage] = useState<string | null>(null);
   const toastTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const [isExportOpen, setIsExportOpen] = useState(false);
+  const [isApkGuideOpen, setIsApkGuideOpen] = useState(false);
   const [exportColors, setExportColors] = useState<string[]>([]);
   const [soundOn, setSoundOn] = useState(true);
 
@@ -276,6 +278,7 @@ export default function App() {
           setSoundOn={setSoundOn}
           isLiveCamera={isLiveCamera}
           onToggleLiveCamera={() => setIsLiveCamera((prev) => !prev)}
+          onOpenApkGuide={() => setIsApkGuideOpen(true)}
         />
 
         {/* Interactive Viewport Canvas with Live Color Picker, Image Auto-Fit & Diamond Pick */}
@@ -430,6 +433,13 @@ export default function App() {
         isOpen={isExportOpen}
         onClose={() => setIsExportOpen(false)}
         colors={exportColors.length > 0 ? exportColors : extractedPalette.dominant}
+        onShowToast={showToast}
+      />
+
+      {/* Android APK & Offline Guide Modal */}
+      <ApkGuideModal
+        isOpen={isApkGuideOpen}
+        onClose={() => setIsApkGuideOpen(false)}
         onShowToast={showToast}
       />
 
