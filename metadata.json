@@ -1,0 +1,7 @@
+{
+  "name": "HB Picker — Color Max",
+  "description": "Android mobile precision image color picker, loupe magnifier, granular color extractor, and Jetpack Compose/Flutter theme generator.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+

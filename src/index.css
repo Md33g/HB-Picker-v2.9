@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', system-ui, sans-serif;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+  }
+  
+  code, kbd, pre {
+    font-family: 'JetBrains Mono', monospace;
+    user-select: text;
+  }
+}
+
+/* Range input styling for rainbow and HSL sliders */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 10px;
+  border-radius: 9999px;
+  outline: none;
+  cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 2.5px solid #000000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.8), 0 0 4px rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  transition: transform 0.1s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:active {
+  transform: scale(1.2);
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 2.5px solid #000000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+  cursor: pointer;
+}
+
+/* Hide scrollbar for clean mobile experience */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
